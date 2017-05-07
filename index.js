@@ -17,14 +17,32 @@ dioryApi.get = function(type, id) {
 
   return promise.then((res, err) => {
     return JSON.stringify(res.body)
+  }).catch(err => {
+    throw JSON.stringify(err.response.body)
   })
 
 }
 
-/*dioryApi.get("diories", "5652").then(res => {
+dioryApi.get("diories", "5652").then(res => {
+  console.log(res)
+}).catch(err => {
+  console.log(err)
+})
+
+/*dioryApi.get("connections", "9979").then(res => {
   console.log(res)
 })*/
 
-dioryApi.get("connections", "9979").then(res => {
+/*dioryApi.get("connections", "invalid id").then(res => {
   console.log(res)
-})
+}).catch(err => {
+  console.log(err)
+})*/
+
+/*dioryApi.get("connections", "5652").then(res => {
+  console.log(res)
+}).catch(err => {
+  console.log(err)
+})*/
+
+
