@@ -4,9 +4,16 @@ var request = superagent.agent()
 function dioryApi() {}
 
 dioryApi.get = function(type, id) {
-
+  var authToken;
   var baseUrl = "http://diory-server.herokuapp.com/v1/"
-  var authToken = "diomber-room-1"
+
+  try { 
+    var diographAuth = require("diograph-authentication")
+    authToken = diographAuth.token
+  } 
+  catch(e) {
+    authToken = "diomber-room-1"
+  }
 
   type = type + "/"
 
