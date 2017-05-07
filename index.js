@@ -21,6 +21,10 @@ dioryApi.get = function(type, id) {
 
 }
 
-dioryApi.get("diories", "5652").then(res => {
+/*dioryApi.get("diories", "5652").then(res => {
+  console.log(res)
+})*/
+
+dioryApi.get("connections", "9979").then(res => {
   console.log(res)
 })
