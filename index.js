@@ -1,12 +1,20 @@
 var superagent = require("superagent")
 var request = superagent.agent()
 
-request
-  .get("http://diory-server.herokuapp.com/v1/diories/5652")
-  .set("Accept", "application/vnd.api+json")
-  .set("Authorization", "diomber-room-1")
-  .end((err, res) => {
-    console.log(res) 
-  })
+var baseUrl = "http://diory-server.herokuapp.com/v1/"
+var type = "diories/"
+var id = "5652"
+var authToken = "diomber-room-1"
 
-console.log("Hello world!")
+var promise = request
+  .get(baseUrl + type + id)
+  .set("Accept", "application/vnd.api+json")
+  .set("Authorization", authToken)
+
+var response = promise.then((res, err) => {
+  return JSON.stringify(res.body)
+})
+
+response.then(res => {
+  console.log(res)
+})
